@@ -1,15 +1,27 @@
-
-
+let num = Math.floor(Math.random() * 3);
 
 function getComputerChoice(num) {
-    let num = Math.floor(Math.random() * 3);
 
     if (num === 0) {
-        console.log('rock');
+        return 'rock';
     } else if (num === 1) {
-        console.log('paper');
+        return 'paper';
     } else {
-        console.log('scissors');
+        return 'scissors';
     }
 }
-getComputerChoice(num);
+console.log(getComputerChoice(num));
+
+
+let choice = prompt('Your choice', getComputerChoice(num));
+
+function getHumanChoice(choice) {
+    if (choice === 0) {
+        return 'rock';
+    } else if (choice === 1) {
+        return 'paper';
+    } else {
+        return 'scissors';
+    }
+}
+console.log(getComputerChoice(choice));
