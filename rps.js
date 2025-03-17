@@ -1,5 +1,12 @@
-let num = Math.floor(Math.random() * 3);
+// Rock paper scissors game
 
+// Variables
+let num = Math.floor(Math.random() * 3);
+let choice = prompt('Your choice', getComputerChoice(num));
+humanScore = 0;
+computerScore = 0;
+
+// Function to  get random computers choice
 function getComputerChoice(num) {
 
     if (num === 0) {
@@ -12,9 +19,7 @@ function getComputerChoice(num) {
 }
 console.log(getComputerChoice(num));
 
-
-let choice = prompt('Your choice', getComputerChoice(num));
-
+// Function that prompts human user for valid value to be returned
 function getHumanChoice(choice) {
     if (choice === 0) {
         return 'rock';
@@ -24,4 +29,12 @@ function getHumanChoice(choice) {
         return 'scissors';
     }
 }
-console.log(getComputerChoice(choice));
+console.log(getHumanChoice(choice));
+
+// Function to keep track of the score
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        return "It's a tie!";
+    } else if (humanChoice(num) === )
+}
