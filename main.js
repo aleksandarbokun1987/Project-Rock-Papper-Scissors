@@ -17,7 +17,7 @@ function getComputerChoice() {
 
 // Human choice function
 function getHumanChoice() {
-    let choice = prompt('Pick your gesture! (Rock Scissors or Paper').toLowerCase();
+    let choice = prompt('Pick your gesture! (Rock Scissors or Paper)').toLowerCase();
     return choice;
 }
 
@@ -42,6 +42,17 @@ function playRound() {
 
     }
 }
+
 // Function call
-console.log(playRound());
-console.log(`Score - Human: ${humanScore}, Computer: ${computerScore}`);
+for (let i = 0; i < 5; i++) {
+    console.log(playRound());
+    console.log(`Score - Human: ${humanScore}, Computer: ${computerScore}`);
+}
+
+// Winner announcement
+
+if (computerScore > humanScore) {
+    console.log("Sorry, CPU wins the game");
+} else {
+    console.log("Congrats you won the game");
+}
