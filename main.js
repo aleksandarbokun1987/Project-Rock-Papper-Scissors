@@ -1,31 +1,47 @@
-// CPU random choice function
+// Global scope variables
+let humanScore = 0;
+let computerScore = 0;
 
-let randomNumber = Math.floor(Math.random() * 3);
-
+// Computer choice function
 function getComputerChoice() {
+    const randomNumber = Math.floor(Math.random() * 3);
 
     if (randomNumber === 0) {
-        return ' CPU played Rock!';
+        return 'rock';
     } else if (randomNumber === 1) {
-        return 'CPU played Paper!';
+        return 'paper';
     } else {
-        return 'CPU played Scissors!';
+        return 'scissors';
     }
 }
 
 // Human choice function
-
-let humanChoice = prompt("Pick your gesture! (Rock, Paper or Scissors)").toLowerCase();
-
 function getHumanChoice() {
+    let choice = prompt('Pick your gesture! (Rock Scissors or Paper').toLowerCase();
+    return choice;
+}
 
-    if (humanChoice === "rock") {
-        return "You played Rock";
-    } else if (humanChoice === "paper") {
-        return "You played Paper";
+
+// Gameplay logic function
+function playRound() {
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
+
+    if (humanChoice === computerChoice) {
+        return "It's a tie!"
+    } else if (
+        (humanChoice === 'rock' && computerChoice === 'scissors') ||
+        (humanChoice === 'paper' && computerChoice === 'rock') ||
+        (humanChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        humanScore++;
+        return `${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}, human wins!`;
     } else {
-        return "You played Scissors!";
+        computerScore++;
+        return `${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${humanChoice}, CPU wins!`;
+
     }
-};
-console.log(getHumanChoice());
-console.log(getComputerChoice());
+}
+// Function call
+console.log(playRound());
+console.log(`Score - Human: ${humanScore}, Computer: ${computerScore}`);
