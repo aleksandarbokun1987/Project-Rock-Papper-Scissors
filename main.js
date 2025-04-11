@@ -68,5 +68,14 @@ function announceWinner() {
     } else {
         console.log("It's a tie game!");
     }
-    // Optionally disable buttons after the game ends
+
 }
+
+// Adding DIV for result display
+
+const createDiv = document.createElement('div');
+createDiv.classList.add('container');
+createDiv.setAttribute('style', < div > 'background: blue; height: 50px; width: 50px;' < /div>);
+
+
+        document.body.appendChild(createDiv);
