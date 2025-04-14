@@ -30,25 +30,34 @@ function setHumanChoice(choice) {
     playRound(); // Call playRound after the human makes a choice
 }
 
+// Adding DIV for result display
+
+const createDiv = document.createElement('div');
+createDiv.classList.add('container');
+createDiv.setAttribute('style', 'background: yellow;');
+createDiv.textContent = `Score - Human: ${humanScore}, Computer: ${computerScore}`;
+document.body.appendChild(createDiv);
+
 // Gameplay logic function
 function playRound() {
     let computerChoice = getComputerChoice();
 
     if (humanChoice === computerChoice) {
-        console.log("It's a tie!");
+        createDiv.textContent = "It's a tie!";
     } else if (
         (humanChoice === 'rock' && computerChoice === 'scissors') ||
         (humanChoice === 'paper' && computerChoice === 'rock') ||
         (humanChoice === 'scissors' && computerChoice === 'paper')
     ) {
         humanScore++;
-        console.log(`${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}, human wins!`);
+        createDiv.textContent = `${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}, human wins!`;
     } else {
         computerScore++;
-        console.log(`${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${humanChoice}, CPU wins!`);
+        createDiv.textContent = `${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${humanChoice}, CPU wins!`;
     }
 
-    console.log(`Score - Human: ${humanScore}, Computer: ${computerScore}`);
+    // Update the score in the DIV
+    createDiv.textContent += ` | Score - Human: ${humanScore}, Computer: ${computerScore}`;
 
     // Reset humanChoice for the next round
     humanChoice = null;
@@ -62,20 +71,10 @@ function playRound() {
 // Winner announcement
 function announceWinner() {
     if (computerScore > humanScore) {
-        console.log("Sorry, CPU wins the game");
+        createDiv.textContent = "Sorry, CPU wins the game";
     } else if (humanScore > computerScore) {
-        console.log("Congrats you won the game");
+        createDiv.textContent = "Congrats you won the game";
     } else {
-        console.log("It's a tie game!");
+        createDiv.textContent = "It's a tie game!";
     }
-
 }
-
-// Adding DIV for result display
-
-const createDiv = document.createElement('div');
-createDiv.classList.add('container');
-createDiv.setAttribute('style', < div > 'background: blue; height: 50px; width: 50px;' < /div>);
-
-
-        document.body.appendChild(createDiv);
